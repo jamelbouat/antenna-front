@@ -1,0 +1,98 @@
+{
+  "apiVersion" : "route.openshift.io/v1",
+  "kind" : "Route",
+  "metadata" : {
+    "annotations" : {
+      "app.openshift.io/vcs-ref" : "master",
+      "app.openshift.io/vcs-uri" : "https://github.com/sebastienblanc/antennas-front",
+      "jkube.io/git-branch" : "master",
+      "jkube.io/git-commit" : "dd5dfa95410afa5b6d4c9b96586b5fd5b68e1e7b",
+      "jkube.io/git-url" : "https://github.com/sebastienblanc/antennas-front"
+    },
+    "creationTimestamp" : "2022-05-18T14:38:55Z",
+    "labels" : {
+      "app" : "antennas-front",
+      "group" : "org.sebi",
+      "provider" : "jkube",
+      "version" : "1.0.0-SNAPSHOT"
+    },
+    "managedFields" : [ {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:metadata" : {
+          "f:annotations" : {
+            "." : { },
+            "f:app.openshift.io/vcs-ref" : { },
+            "f:app.openshift.io/vcs-uri" : { },
+            "f:jkube.io/git-branch" : { },
+            "f:jkube.io/git-commit" : { },
+            "f:jkube.io/git-url" : { }
+          },
+          "f:labels" : {
+            "." : { },
+            "f:app" : { },
+            "f:group" : { },
+            "f:provider" : { },
+            "f:version" : { }
+          }
+        },
+        "f:spec" : {
+          "f:port" : {
+            "." : { },
+            "f:targetPort" : { }
+          },
+          "f:to" : {
+            "f:kind" : { },
+            "f:name" : { },
+            "f:weight" : { }
+          },
+          "f:wildcardPolicy" : { }
+        }
+      },
+      "manager" : "okhttp",
+      "operation" : "Update",
+      "time" : "2022-05-18T14:38:55Z"
+    }, {
+      "apiVersion" : "route.openshift.io/v1",
+      "fieldsType" : "FieldsV1",
+      "fieldsV1" : {
+        "f:status" : {
+          "f:ingress" : { }
+        }
+      },
+      "manager" : "openshift-router",
+      "operation" : "Update",
+      "time" : "2022-05-18T14:38:55Z"
+    } ],
+    "name" : "antennas-front",
+    "namespace" : "namespace-djamel",
+    "resourceVersion" : "857194",
+    "uid" : "fe740876-de4b-4388-9261-15aff5cbe623"
+  },
+  "spec" : {
+    "host" : "antennas-front-namespace-djamel.rhd-ams03-may16-876966834-4c50a18a6ae19b704aa10d04d75751f8-0000.ams03.containers.appdomain.cloud",
+    "port" : {
+      "targetPort" : 8080
+    },
+    "to" : {
+      "kind" : "Service",
+      "name" : "antennas-front",
+      "weight" : 100
+    },
+    "wildcardPolicy" : "None"
+  },
+  "status" : {
+    "ingress" : [ {
+      "conditions" : [ {
+        "lastTransitionTime" : "2022-05-18T14:38:55Z",
+        "status" : "True",
+        "type" : "Admitted"
+      } ],
+      "host" : "antennas-front-namespace-djamel.rhd-ams03-may16-876966834-4c50a18a6ae19b704aa10d04d75751f8-0000.ams03.containers.appdomain.cloud",
+      "routerCanonicalHostname" : "router-default.rhd-ams03-may16-876966834-4c50a18a6ae19b704aa10d04d75751f8-0000.ams03.containers.appdomain.cloud",
+      "routerName" : "default",
+      "wildcardPolicy" : "None"
+    } ]
+  }
+}

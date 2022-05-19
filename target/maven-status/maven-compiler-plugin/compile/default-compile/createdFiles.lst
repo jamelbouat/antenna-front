@@ -1,0 +1,10 @@
+org/sebi/AntennaService.class
+org/sebi/AntennaEncoder.class
+org/sebi/incident/Incident.class
+org/sebi/AntennaResource.class
+org/sebi/incident/IncidentStartup.class
+org/sebi/HelloResource.class
+org/sebi/Antenna.class
+META-INF/panache-archive.marker
+org/sebi/AntennaServer.class
+org/sebi/incident/IncidentResource.class

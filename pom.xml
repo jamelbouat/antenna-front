@@ -74,6 +74,17 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.eclipse.jkube</groupId>
+        <artifactId>openshift-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+          <authConfig>
+            <username>mtanguycap</username>
+            <password>CK9tCDIRDhMv9gU13I10Zapn+NDmhD4H6mQizvrpChTctkKUB3Wis2GNy1IS/1UB</password>
+          </authConfig>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
         <version>${quarkus.platform.version}</version>

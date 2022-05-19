@@ -1,0 +1,22 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    jkube.io/git-url: https://github.com/sebastienblanc/antennas-front
+    app.openshift.io/vcs-uri: https://github.com/sebastienblanc/antennas-front
+    jkube.io/git-commit: dd5dfa95410afa5b6d4c9b96586b5fd5b68e1e7b
+    jkube.io/git-branch: master
+  labels:
+    app: antennas-front
+    provider: jkube
+    version: 1.0.0-SNAPSHOT
+    group: org.sebi
+  name: antennas-front
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: antennas-front

@@ -1,0 +1,72 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    jkube.io/git-url: https://github.com/sebastienblanc/antennas-front
+    app.openshift.io/vcs-uri: https://github.com/sebastienblanc/antennas-front
+    jkube.io/git-commit: dd5dfa95410afa5b6d4c9b96586b5fd5b68e1e7b
+    jkube.io/git-branch: master
+  labels:
+    app: antennas-front
+    provider: jkube
+    version: 1.0.0-SNAPSHOT
+    group: org.sebi
+  name: antennas-front
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    app: antennas-front
+    provider: jkube
+    group: org.sebi
+  strategy:
+    rollingParams:
+      timeoutSeconds: 3600
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        app.openshift.io/vcs-ref: master
+        jkube.io/git-url: https://github.com/sebastienblanc/antennas-front
+        app.openshift.io/vcs-uri: https://github.com/sebastienblanc/antennas-front
+        jkube.io/git-commit: dd5dfa95410afa5b6d4c9b96586b5fd5b68e1e7b
+        jkube.io/git-branch: master
+      labels:
+        app: antennas-front
+        provider: jkube
+        version: 1.0.0-SNAPSHOT
+        group: org.sebi
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: antennas-front:latest
+        imagePullPolicy: IfNotPresent
+        name: quarkus
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 9779
+          name: prometheus
+          protocol: TCP
+        - containerPort: 8778
+          name: jolokia
+          protocol: TCP
+        securityContext:
+          privileged: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - quarkus
+      from:
+        kind: ImageStreamTag
+        name: antennas-front:latest
+    type: ImageChange

@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    prometheus.io/path: /metrics
+    jkube.io/git-branch: master
+    prometheus.io/port: "9779"
+    prometheus.io/scrape: "true"
+    jkube.io/git-url: https://github.com/sebastienblanc/antennas-front
+    app.openshift.io/vcs-uri: https://github.com/sebastienblanc/antennas-front
+    jkube.io/git-commit: dd5dfa95410afa5b6d4c9b96586b5fd5b68e1e7b
+  labels:
+    expose: "true"
+    app: antennas-front
+    provider: jkube
+    version: 1.0.0-SNAPSHOT
+    group: org.sebi
+  name: antennas-front
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: antennas-front
+    provider: jkube
+    group: org.sebi

@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: List
+items:
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    name: antennas-front
+  spec:
+    tags:
+    - from:
+        kind: ImageStreamImage
+        name: antennas-front@sha256:8766e6ef8642273a4ebe7a92b91627a0c0aa3c620608814366783047ae82d3b7
+        namespace: namespace-djamel
+      name: latest
